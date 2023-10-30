@@ -1,4 +1,5 @@
-#include <stdlib.h>#include "lists.h"
+#include <stdlib.h>
+#include "lists.h"
 /**
  * check_cycle - check for cycle in linked ls
  * @list: head of our linkedlist
@@ -7,22 +8,22 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *slow, *fast;
+	listint_t *fast, *slow;
 
-	if (!list)
-	{
+	if (!list || !list->next)
 		return (0);
-	}
+
+	fast = list;
 	slow = list;
-	fast = list->next;
-	while (fast && slow && fast->next)
+
+	while(slow != NULL && fast != NULL && fast->next != NULL)
 	{
-		if (slow == fast)
+	slow = slow->next;
+	fast = fast->next->next;
+	if (slow == fast)
 		{
-			return (1);
+			return(1);
 		}
-		slow = slow->next;
-		fast = fast->next->next;
 	}
-	return (0);
+		return(0);
 }
