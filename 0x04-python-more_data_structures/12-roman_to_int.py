@@ -1,16 +1,15 @@
 #!/usr/bin/python3
-def roman_to_int(roman_string):
-    my_diction = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
-    num = 0
-
-    if roman_string is None or type(roman_string) is not str:
+def roman_to_int(roman_string: str):
+    if roman_string is None or type(roman_string) != str:
         return 0
+    data = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+    numbers = [data[x] for x in roman_string] + [0]
+    rep = 0
 
-    for i in range(len(roman_string)):
-        if i == len(roman_string) - 1:
-            num += my_diction[roman_string[i]]
-        elif my_diction[roman_string[i]] >= my_dicc[roman_string[i + 1]]:
-            num += my_diction[roman_string[i]]
+    for i in range(len(numbers) - 1):
+        if numbers[i] >= numbers[i+1]:
+            rep += numbers[i]
         else:
-            num -= my_diction[roman_string[i]]
-    return num
+            rep -= numbers[i]
+
+    return rep
