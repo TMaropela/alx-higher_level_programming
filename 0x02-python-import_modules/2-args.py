@@ -1,11 +1,7 @@
 #!/usr/bin/python3
-#Printing the number and argument lists
-
 import sys
-
 if __name__ == "__main__":
     i = 1
-    
     if len(sys.argv) == 1:
         print("0 arguments.")
     elif len(sys.argv) == 2:
